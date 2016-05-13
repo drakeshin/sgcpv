@@ -29,7 +29,7 @@ public class Main extends javax.swing.JFrame {
 
         tabbedPane = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaVendas = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -42,7 +42,7 @@ public class Main extends javax.swing.JFrame {
 
         tabbedPane.setDoubleBuffered(true);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaVendas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -53,7 +53,7 @@ public class Main extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelaVendas);
 
         tabbedPane.addTab("Vendas", jScrollPane1);
 
@@ -151,9 +151,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTabbedPane tabbedPane;
+    private javax.swing.JTable tabelaVendas;
     // End of variables declaration//GEN-END:variables
 }
