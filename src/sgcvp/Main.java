@@ -27,7 +27,7 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tabbedPane = new javax.swing.JTabbedPane();
+        myTab = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaVendas = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -37,17 +37,17 @@ public class Main extends javax.swing.JFrame {
         delItem = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
+        jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tabbedPane.setDoubleBuffered(true);
+        myTab.setDoubleBuffered(true);
 
         tabelaVendas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -67,7 +67,7 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabelaVendas);
 
-        tabbedPane.addTab("Vendas", jScrollPane1);
+        myTab.addTab("Vendas", jScrollPane1);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -87,7 +87,7 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable2);
 
-        tabbedPane.addTab("Clientes", jScrollPane2);
+        myTab.addTab("Clientes", jScrollPane2);
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -107,13 +107,15 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jTable3);
 
-        tabbedPane.addTab("Produtos", jScrollPane3);
+        myTab.addTab("Produtos", jScrollPane3);
 
         delItem.setText("Deletar Item");
 
         jButton1.setText("Visualizar Item");
 
         jCheckBox1.setText("Gerar ID Automaticamente");
+
+        jButton2.setText("Adicionar Item");
 
         jMenu1.setText("Arquivo");
 
@@ -126,9 +128,6 @@ public class Main extends javax.swing.JFrame {
 
         jMenuItem3.setText("Salvar Como");
         jMenu1.add(jMenuItem3);
-
-        jMenuItem4.setText("Adicionar Item");
-        jMenu1.add(jMenuItem4);
 
         jMenuItem5.setText("Pesquisar ");
         jMenu1.add(jMenuItem5);
@@ -146,9 +145,11 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(delItem)
                 .addContainerGap())
-            .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+            .addComponent(myTab, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,9 +158,10 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(delItem)
                     .addComponent(jButton1)
-                    .addComponent(jCheckBox1))
+                    .addComponent(jCheckBox1)
+                    .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE))
+                .addComponent(myTab, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE))
         );
 
         pack();
@@ -203,20 +205,20 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton delItem;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTabbedPane tabbedPane;
+    private javax.swing.JTabbedPane myTab;
     private javax.swing.JTable tabelaVendas;
     // End of variables declaration//GEN-END:variables
 }
