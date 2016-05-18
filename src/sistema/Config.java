@@ -119,4 +119,35 @@ public class Config {
         stream = new FileInputStream(file3);
         prop3.load(stream);
     }
+    
+     public static void loadOrcamentos() throws FileNotFoundException, IOException{
+        
+        
+        Properties prop4 = new Properties();
+        String path = System.getProperty("user.home") + File.separator + "Documents" + File.separator;
+        File folder = new File(path+"SGVPC - System");
+        if(!folder.exists()){
+            try{
+                folder.mkdirs();
+            }catch(Exception e){JOptionPane.showMessageDialog(null, "Error: "+e);}
+        }else{}
+        
+        
+        File file4 = new File(folder+"productControl.data");
+        
+        if(file4.exists()){
+            try{
+                
+                PrintWriter writer4 = new PrintWriter(file4);
+                
+                writer4.print("");
+                
+                writer4.close();
+            }catch(Exception e){JOptionPane.showMessageDialog(null, "Error: "+e);}
+        }else{}
+        
+        stream = new FileInputStream(file4);
+        prop4.load(stream);
+    }
+     
 }
