@@ -107,11 +107,11 @@ public class Main extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "NOME/RAZÃO SOCIAL", "CPF/CNPJ", "RG", "IE", "IM", "CEP", "ENDEREÇO", "NÚMERO", "TELEFONE", "CELULAR"
+                "ID", "NOME/RAZÃO SOCIAL", "CPF/CNPJ", "RG", "DATA NASCIMENTO/CRIAÇÃO", "IE", "IM", "CEP", "ENDEREÇO", "NÚMERO", "TELEFONE", "CELULAR"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -275,7 +275,10 @@ public class Main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /***
+     * Menu Action
+     * @param evt 
+     */
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
         Pesquisar pForm = new Pesquisar();
