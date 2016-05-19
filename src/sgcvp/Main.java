@@ -5,11 +5,15 @@
  */
 package sgcvp;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import opcoes.Pesquisar;
 import sistema.Config;
@@ -45,11 +49,11 @@ public class Main extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaVendas = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tabelaClientes = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tabelaProdutos = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaOrcamentos = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
         delItem = new javax.swing.JButton();
@@ -98,7 +102,7 @@ public class Main extends javax.swing.JFrame {
 
         myTab.addTab("Vendas", jScrollPane1);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -114,11 +118,20 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        tabelaClientes.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tabelaClientesAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jScrollPane2.setViewportView(tabelaClientes);
 
         myTab.addTab("Clientes", jScrollPane2);
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -134,11 +147,20 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable3);
+        tabelaProdutos.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tabelaProdutosAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jScrollPane3.setViewportView(tabelaProdutos);
 
         myTab.addTab("Produtos", jScrollPane3);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaOrcamentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -154,7 +176,16 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(jTable1);
+        tabelaOrcamentos.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tabelaOrcamentosAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jScrollPane4.setViewportView(tabelaOrcamentos);
 
         myTab.addTab("Orçamentos", jScrollPane4);
 
@@ -250,21 +281,144 @@ public class Main extends javax.swing.JFrame {
         Pesquisar pForm = new Pesquisar();
         pForm.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
-
+    /**
+     * Table Update Event
+     * @param evt 
+     */
     private void tabelaVendasAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tabelaVendasAncestorAdded
+        //Set the file + path's file
+        String path = System.getProperty("user.home") + File.separator + "Documents" + File.separator + "SGVPC - System" + File.separator;
+        File arquivo = new File(path+"sellControl.data");
         try {
-            // TODO add your handling code here:
+            // Load the properties file
             prop = shandler.loadSell();
+            //use the defaul model to "update" information
             DefaultTableModel model = (DefaultTableModel) tabelaVendas.getModel();
             if (model.getRowCount() > 0){
                 model.setRowCount(0);
             }
             
+            //just something to user the file
+            FileInputStream fis = new FileInputStream(arquivo);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader br = new BufferedReader(isr);
+            
+            //read all the file
+            String line = br.readLine();
+            //the the information split by ";" to show in the table
+            while(line != null){
+                Object[] obj = line.split(";");
+                model.addRow(obj);
+                line = br.readLine();
+            }
+            //tabelaVendas.revalidate();
+            //tabelaVendas.repaint();
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, "Erro");
         }
     }//GEN-LAST:event_tabelaVendasAncestorAdded
 
+    private void tabelaClientesAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tabelaClientesAncestorAdded
+        //Set the file + path's file
+        String path = System.getProperty("user.home") + File.separator + "Documents" + File.separator + "SGVPC - System" + File.separator;
+        File arquivo = new File(path+"clientControl.data");
+        try {
+            // Load the properties file
+            prop = shandler.loadClient();
+            //use the defaul model to "update" information
+            DefaultTableModel model = (DefaultTableModel) tabelaClientes.getModel();
+            if (model.getRowCount() > 0){
+                model.setRowCount(0);
+            }
+            
+            //just something to user the file
+            FileInputStream fis = new FileInputStream(arquivo);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader br = new BufferedReader(isr);
+            
+            //read all the file
+            String line = br.readLine();
+            //the the information split by ";" to show in the table
+            while(line != null){
+                Object[] obj = line.split(";");
+                model.addRow(obj);
+                line = br.readLine();
+            }
+            //tabelaVendas.revalidate();
+            //tabelaVendas.repaint();
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, "Erro");
+        }
+    }//GEN-LAST:event_tabelaClientesAncestorAdded
+
+    private void tabelaProdutosAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tabelaProdutosAncestorAdded
+        String path = System.getProperty("user.home") + File.separator + "Documents" + File.separator + "SGVPC - System" + File.separator;
+        File arquivo = new File(path+"productControl.data");
+        try {
+            // Load the properties file
+            prop = shandler.loadProduct();
+            //use the defaul model to "update" information
+            DefaultTableModel model = (DefaultTableModel) tabelaProdutos.getModel();
+            if (model.getRowCount() > 0){
+                model.setRowCount(0);
+            }
+            
+            //just something to user the file
+            FileInputStream fis = new FileInputStream(arquivo);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader br = new BufferedReader(isr);
+            
+            //read all the file
+            String line = br.readLine();
+            //the the information split by ";" to show in the table
+            while(line != null){
+                Object[] obj = line.split(";");
+                model.addRow(obj);
+                line = br.readLine();
+            }
+            //tabelaVendas.revalidate();
+            //tabelaVendas.repaint();
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, "Erro");
+        }
+    }//GEN-LAST:event_tabelaProdutosAncestorAdded
+
+    private void tabelaOrcamentosAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tabelaOrcamentosAncestorAdded
+        String path = System.getProperty("user.home") + File.separator + "Documents" + File.separator + "SGVPC - System" + File.separator;
+        File arquivo = new File(path+"budgetControl.data");
+        try {
+            // Load the properties file
+            prop = shandler.loadProduct();
+            //use the defaul model to "update" information
+            DefaultTableModel model = (DefaultTableModel) tabelaOrcamentos.getModel();
+            if (model.getRowCount() > 0){
+                model.setRowCount(0);
+            }
+            
+            //just something to user the file
+            FileInputStream fis = new FileInputStream(arquivo);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader br = new BufferedReader(isr);
+            
+            //read all the file
+            String line = br.readLine();
+            //the the information split by ";" to show in the table
+            while(line != null){
+                Object[] obj = line.split(";");
+                model.addRow(obj);
+                line = br.readLine();
+            }
+            //tabelaVendas.revalidate();
+            //tabelaVendas.repaint();
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, "Erro");
+        }
+    }//GEN-LAST:event_tabelaOrcamentosAncestorAdded
+    
     /**
      * @param args the command line arguments
      */
@@ -316,11 +470,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTabbedPane myTab;
+    private javax.swing.JTable tabelaClientes;
+    private javax.swing.JTable tabelaOrcamentos;
+    private javax.swing.JTable tabelaProdutos;
     private javax.swing.JTable tabelaVendas;
     // End of variables declaration//GEN-END:variables
 }

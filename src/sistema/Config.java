@@ -106,7 +106,7 @@ public class Config {
         
         File file3 = new File(folder+File.separator+"productControl.data");
         
-        if(file3.exists()){
+        if(!file3.exists()){
             try{
                 
                 PrintWriter writer3 = new PrintWriter(file3);
@@ -135,7 +135,7 @@ public class Config {
         }else{}
         
         
-        File file4 = new File(folder+File.separator+"productControl.data");
+        File file4 = new File(folder+File.separator+"budgetControl.data");
         
         if(file4.exists()){
             try{
