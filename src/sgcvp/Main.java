@@ -391,7 +391,7 @@ public class Main extends javax.swing.JFrame {
         File arquivo = new File(path+"budgetControl.data");
         try {
             // Load the properties file
-            prop = shandler.loadProduct();
+            prop = shandler.loadOrcamentos();
             //use the defaul model to "update" information
             DefaultTableModel model = (DefaultTableModel) tabelaOrcamentos.getModel();
             if (model.getRowCount() > 0){

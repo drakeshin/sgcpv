@@ -137,7 +137,7 @@ public class Config {
         
         File file4 = new File(folder+File.separator+"budgetControl.data");
         
-        if(file4.exists()){
+        if(!file4.exists()){
             try{
                 
                 PrintWriter writer4 = new PrintWriter(file4);
