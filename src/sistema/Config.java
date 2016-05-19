@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
 public class Config {
     private static FileInputStream stream;
     
-    public static void loadSell() throws FileNotFoundException, IOException{
+    public static Properties loadSell() throws FileNotFoundException, IOException{
         
         Properties prop = new Properties();
         
@@ -36,8 +36,8 @@ public class Config {
             }catch(Exception e){JOptionPane.showMessageDialog(null, "Error: "+e);}
         }else{}
         
-        File file1 = new File(folder+"sellControl.data");
-        
+        File file1 = new File(folder+File.separator+"sellControl.data");
+        System.out.println(file1);
         
         if(!file1.exists()){
             try{
@@ -52,10 +52,10 @@ public class Config {
         
         stream = new FileInputStream(file1);
         prop.load(stream);
-        
+        return prop;
     }
     
-    public static void loadClient() throws FileNotFoundException, IOException{
+    public static Properties loadClient() throws FileNotFoundException, IOException{
         
         
         Properties prop2 = new Properties();
@@ -69,7 +69,7 @@ public class Config {
         }else{}
         
         
-        File file2 = new File(folder+"clientControl.data");
+        File file2 = new File(folder+File.separator+"clientControl.data");
         
         
         if( !file2.exists()){
@@ -88,9 +88,10 @@ public class Config {
         
         stream = new FileInputStream(file2);
         prop2.load(stream);
+        return prop2;
     }
     
-    public static void loadProduct() throws FileNotFoundException, IOException{
+    public static Properties loadProduct() throws FileNotFoundException, IOException{
         
         
         Properties prop3 = new Properties();
@@ -103,7 +104,7 @@ public class Config {
         }else{}
         
         
-        File file3 = new File(folder+"productControl.data");
+        File file3 = new File(folder+File.separator+"productControl.data");
         
         if(file3.exists()){
             try{
@@ -118,9 +119,10 @@ public class Config {
         
         stream = new FileInputStream(file3);
         prop3.load(stream);
+        return prop3;
     }
     
-     public static void loadOrcamentos() throws FileNotFoundException, IOException{
+     public static Properties loadOrcamentos() throws FileNotFoundException, IOException{
         
         
         Properties prop4 = new Properties();
@@ -133,7 +135,7 @@ public class Config {
         }else{}
         
         
-        File file4 = new File(folder+"productControl.data");
+        File file4 = new File(folder+File.separator+"productControl.data");
         
         if(file4.exists()){
             try{
@@ -148,6 +150,7 @@ public class Config {
         
         stream = new FileInputStream(file4);
         prop4.load(stream);
+        return prop4;
     }
      
 }

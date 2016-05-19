@@ -41,6 +41,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pesquisar "/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem5ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -137,6 +140,9 @@
                   </Table>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="tabelaVendasAncestorAdded"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

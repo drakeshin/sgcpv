@@ -5,12 +5,26 @@
  */
 package sgcvp;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import opcoes.Pesquisar;
+import sistema.Config;
+
 /**
  *
  * @author designbrindes
  */
 public class Main extends javax.swing.JFrame {
-
+    /**
+     * Vars Area
+     */
+    private Properties prop;
+    private Config shandler;
+    
     /**
      * Creates new form Main
      */
@@ -69,6 +83,15 @@ public class Main extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tabelaVendas.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tabelaVendasAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         jScrollPane1.setViewportView(tabelaVendas);
@@ -180,6 +203,11 @@ public class Main extends javax.swing.JFrame {
 
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem5.setText("Pesquisar ");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem5);
 
         jMenuBar1.add(jMenu1);
@@ -216,6 +244,26 @@ public class Main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        Pesquisar pForm = new Pesquisar();
+        pForm.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void tabelaVendasAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tabelaVendasAncestorAdded
+        try {
+            // TODO add your handling code here:
+            prop = shandler.loadSell();
+            DefaultTableModel model = (DefaultTableModel) tabelaVendas.getModel();
+            if (model.getRowCount() > 0){
+                model.setRowCount(0);
+            }
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_tabelaVendasAncestorAdded
 
     /**
      * @param args the command line arguments
