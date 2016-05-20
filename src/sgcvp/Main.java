@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import opcoes.Pesquisar;
+import opcoes.VendasAdc;
 import sistema.Config;
 
 /**
@@ -29,7 +30,7 @@ public class Main extends javax.swing.JFrame {
     private Properties prop;
     private Config shandler;
     public boolean checkedID;
-    
+    VendasAdc vadcF;
     /**
      * Creates new form Main
      */
@@ -59,7 +60,6 @@ public class Main extends javax.swing.JFrame {
         jTable4 = new javax.swing.JTable();
         delItem = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        idCheck = new javax.swing.JCheckBox();
         jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -214,14 +214,17 @@ public class Main extends javax.swing.JFrame {
 
         jButton1.setText("Visualizar Item");
 
-        idCheck.setText("Gerar ID Automaticamente");
-        idCheck.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idCheckActionPerformed(evt);
+        jButton2.setText("Adicionar Item");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
             }
         });
-
-        jButton2.setText("Adicionar Item");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Arquivo");
 
@@ -256,8 +259,7 @@ public class Main extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(idCheck)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
@@ -273,7 +275,6 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(delItem)
                     .addComponent(jButton1)
-                    .addComponent(idCheck)
                     .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(myTab, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
@@ -428,17 +429,17 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tabelaOrcamentosAncestorAdded
     
-    /***
-     * ID Event
-     * @param evt 
-     */
-    private void idCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idCheckActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if(idCheck.isSelected()){
-            checkedID = true;
-            
-        }
-    }//GEN-LAST:event_idCheckActionPerformed
+        
+        //vadcF.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        vadcF = new VendasAdc();
+        vadcF.setVisible(true);
+    }//GEN-LAST:event_jButton2MouseClicked
     
     /**
      * @param args the command line arguments
@@ -477,7 +478,6 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton delItem;
-    private javax.swing.JCheckBox idCheck;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JMenu jMenu1;

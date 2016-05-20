@@ -5,6 +5,7 @@
  */
 package opcoes;
 
+import java.util.Random;
 import sgcvp.Main;
 
 /**
@@ -15,12 +16,13 @@ public class VendasAdc extends javax.swing.JFrame {
     /***
      * Var Area
      */
-    Main mainF = new Main();
+    private boolean checkingIdVar = false;
     /**
      * Creates new form VendasAdc
      */
     public VendasAdc() {
         initComponents();
+       
     }
 
     /**
@@ -32,7 +34,7 @@ public class VendasAdc extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        idLabel = new javax.swing.JLabel();
         idField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         clienteField = new javax.swing.JTextField();
@@ -46,14 +48,14 @@ public class VendasAdc extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        idCheck = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel2.setText("ID:");
-
-        idField.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        idLabel.setText("ID:");
+        idLabel.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                idFieldPropertyChange(evt);
+                idLabelPropertyChange(evt);
             }
         });
 
@@ -80,6 +82,18 @@ public class VendasAdc extends javax.swing.JFrame {
 
         jButton2.setText("Cancelar");
 
+        idCheck.setText("Gerar ID Automaticamente");
+        idCheck.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                idCheckMouseClicked(evt);
+            }
+        });
+        idCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idCheckActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -92,8 +106,11 @@ public class VendasAdc extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(idLabel)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(97, 97, 97)
+                                    .addComponent(idCheck))
                                 .addComponent(jLabel1)
                                 .addComponent(jLabel3)
                                 .addComponent(jLabel4)
@@ -114,9 +131,11 @@ public class VendasAdc extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(idLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idCheck))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -144,17 +163,43 @@ public class VendasAdc extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    /***
-     * ID Check Event
-     * @param evt 
-     */
-    private void idFieldPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_idFieldPropertyChange
-        // TODO add your handling code here:
-        if(mainF.checkedID == true){
-        
-        }
-    }//GEN-LAST:event_idFieldPropertyChange
 
+    private void idLabelPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_idLabelPropertyChange
+        // TODO add your handling code here:
+       // checkingId();
+    }//GEN-LAST:event_idLabelPropertyChange
+
+    private void idCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idCheckActionPerformed
+        // TODO add your handling code here:
+        checkingIdVar = true;
+        if(!idCheck.isSelected()){
+            checkingIdVar = false;
+        }
+        checkingId();
+    }//GEN-LAST:event_idCheckActionPerformed
+
+    private void idCheckMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_idCheckMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_idCheckMouseClicked
+
+   
+    private void checkingId(){
+        
+        if(checkingIdVar == true){
+            idField.setText("");
+            Random rand = new Random();
+            int idRand = rand.nextInt(999999998) +1;
+            
+            idField.setText(Integer.toString(idRand));
+            idField.setEditable(false);
+            
+        } else{
+            idField.setText("");
+            idField.setEditable(true);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -192,13 +237,14 @@ public class VendasAdc extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField clienteField;
+    private javax.swing.JCheckBox idCheck;
     private javax.swing.JTextField idField;
+    private javax.swing.JLabel idLabel;
     private javax.swing.JComboBox itemCombo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
