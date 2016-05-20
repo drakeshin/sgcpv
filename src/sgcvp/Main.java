@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import opcoes.Pesquisar;
-import opcoes.VendasAdc;
+import opcoes.SelectAdc;
 import sistema.Config;
 
 /**
@@ -30,7 +30,7 @@ public class Main extends javax.swing.JFrame {
     private Properties prop;
     private Config shandler;
     public boolean checkedID;
-    VendasAdc vadcF;
+    SelectAdc selecF;
     /**
      * Creates new form Main
      */
@@ -437,8 +437,9 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-        vadcF = new VendasAdc();
-        vadcF.setVisible(true);
+        selecF = new SelectAdc();
+        selecF.setVisible(true);
+        
     }//GEN-LAST:event_jButton2MouseClicked
     
     /**
