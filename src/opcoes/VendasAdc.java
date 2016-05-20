@@ -5,12 +5,17 @@
  */
 package opcoes;
 
+import sgcvp.Main;
+
 /**
  *
  * @author designbrindes
  */
 public class VendasAdc extends javax.swing.JFrame {
-
+    /***
+     * Var Area
+     */
+    Main mainF = new Main();
     /**
      * Creates new form VendasAdc
      */
@@ -45,6 +50,12 @@ public class VendasAdc extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel2.setText("ID:");
+
+        idField.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                idFieldPropertyChange(evt);
+            }
+        });
 
         jLabel1.setText("Cliente:");
 
@@ -133,6 +144,16 @@ public class VendasAdc extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    /***
+     * ID Check Event
+     * @param evt 
+     */
+    private void idFieldPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_idFieldPropertyChange
+        // TODO add your handling code here:
+        if(mainF.checkedID == true){
+        
+        }
+    }//GEN-LAST:event_idFieldPropertyChange
 
     /**
      * @param args the command line arguments

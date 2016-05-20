@@ -28,6 +28,7 @@ public class Main extends javax.swing.JFrame {
      */
     private Properties prop;
     private Config shandler;
+    public boolean checkedID;
     
     /**
      * Creates new form Main
@@ -58,7 +59,7 @@ public class Main extends javax.swing.JFrame {
         jTable4 = new javax.swing.JTable();
         delItem = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        idCheck = new javax.swing.JCheckBox();
         jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -213,7 +214,12 @@ public class Main extends javax.swing.JFrame {
 
         jButton1.setText("Visualizar Item");
 
-        jCheckBox1.setText("Gerar ID Automaticamente");
+        idCheck.setText("Gerar ID Automaticamente");
+        idCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idCheckActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Adicionar Item");
 
@@ -250,7 +256,7 @@ public class Main extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jCheckBox1)
+                .addComponent(idCheck)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -267,7 +273,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(delItem)
                     .addComponent(jButton1)
-                    .addComponent(jCheckBox1)
+                    .addComponent(idCheck)
                     .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(myTab, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
@@ -422,6 +428,18 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tabelaOrcamentosAncestorAdded
     
+    /***
+     * ID Event
+     * @param evt 
+     */
+    private void idCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idCheckActionPerformed
+        // TODO add your handling code here:
+        if(idCheck.isSelected()){
+            checkedID = true;
+            
+        }
+    }//GEN-LAST:event_idCheckActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -459,9 +477,9 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton delItem;
+    private javax.swing.JCheckBox idCheck;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
