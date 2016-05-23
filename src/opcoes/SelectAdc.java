@@ -108,6 +108,32 @@ public class SelectAdc extends javax.swing.JFrame {
         orcaDataField = new javax.swing.JFormattedTextField();
         salvarOrcamentos = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
+        tel2FornField = new javax.swing.JFormattedTextField();
+        idFornCheck = new javax.swing.JCheckBox();
+        idFornField = new javax.swing.JTextField();
+        nomeFornField = new javax.swing.JTextField();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        cpfCnpjFornField = new javax.swing.JTextField();
+        rgLabel1 = new javax.swing.JLabel();
+        rgFornField = new javax.swing.JFormattedTextField();
+        jLabel30 = new javax.swing.JLabel();
+        dataFornField = new javax.swing.JFormattedTextField();
+        jLabel31 = new javax.swing.JLabel();
+        ieFornField = new javax.swing.JFormattedTextField();
+        jLabel32 = new javax.swing.JLabel();
+        imFornField = new javax.swing.JFormattedTextField();
+        jLabel33 = new javax.swing.JLabel();
+        cepFornField = new javax.swing.JFormattedTextField();
+        jLabel34 = new javax.swing.JLabel();
+        endFornField = new javax.swing.JTextField();
+        jLabel35 = new javax.swing.JLabel();
+        numFornField = new javax.swing.JFormattedTextField();
+        jLabel36 = new javax.swing.JLabel();
+        tel1FornField = new javax.swing.JFormattedTextField();
+        jLabel37 = new javax.swing.JLabel();
+        salvarFornecedores = new javax.swing.JButton();
         salvarTodos = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
 
@@ -495,6 +521,11 @@ public class SelectAdc extends javax.swing.JFrame {
         jLabel20.setText("ID:");
 
         orcaIDCheck.setText("Gerar ID Automaticamente");
+        orcaIDCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orcaIDCheckActionPerformed(evt);
+            }
+        });
 
         jLabel21.setText("Cliente:");
 
@@ -602,15 +633,193 @@ public class SelectAdc extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Orçamentos", jPanel4);
 
+        jLabel27.setText("ID:");
+
+        try {
+            tel2FornField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(###)####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        idFornCheck.setText("Gerar ID Automaticamente");
+        idFornCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idFornCheckActionPerformed(evt);
+            }
+        });
+
+        nomeFornField.setToolTipText("Nome / Razão Social");
+
+        jLabel28.setText("Nome/Razão Social:");
+
+        jLabel29.setText("CPF / CNPJ");
+
+        rgLabel1.setText("RG:");
+
+        try {
+            rgFornField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-#")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jLabel30.setText("Data de Nascimento:");
+
+        dataFornField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+
+        jLabel31.setText("Inscrição Estadual:");
+
+        try {
+            ieFornField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jLabel32.setText("Inscrição Municipal:");
+
+        try {
+            imFornField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###/###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jLabel33.setText("CEP:");
+
+        try {
+            cepFornField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jLabel34.setText("Endereço + Complemento:");
+
+        jLabel35.setText("Número:");
+
+        try {
+            numFornField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("######")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jLabel36.setText("Telefone 1:");
+
+        try {
+            tel1FornField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(###)####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jLabel37.setText("Telefone 2");
+
+        salvarFornecedores.setText("Salvar");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 719, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel28)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nomeFornField))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel34)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(endFornField))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel27)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(idFornField, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(idFornCheck))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel29)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cpfCnpjFornField, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rgLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rgFornField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel30)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dataFornField, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel31)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ieFornField, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel32)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(imFornField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel33)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cepFornField, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel35)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(numFornField, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(17, 17, 17)
+                                .addComponent(jLabel36)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tel1FornField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel37)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tel2FornField, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 61, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(325, 325, 325)
+                .addComponent(salvarFornecedores)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 444, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel27)
+                    .addComponent(idFornField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idFornCheck))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nomeFornField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel28))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(cpfCnpjFornField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rgLabel1)
+                    .addComponent(rgFornField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30)
+                    .addComponent(dataFornField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel31)
+                    .addComponent(ieFornField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel32)
+                    .addComponent(imFornField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel33)
+                    .addComponent(cepFornField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel34)
+                    .addComponent(endFornField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel35)
+                    .addComponent(numFornField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel36)
+                    .addComponent(tel1FornField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel37)
+                    .addComponent(tel2FornField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
+                .addComponent(salvarFornecedores))
         );
 
         jTabbedPane1.addTab("Fornecedores", jPanel5);
@@ -696,6 +905,45 @@ public class SelectAdc extends javax.swing.JFrame {
             prodIDField.setEditable(true);
         }
     }//GEN-LAST:event_prodGeraIDCheckActionPerformed
+
+    private void idFornCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idFornCheckActionPerformed
+        // TODO add your handling code here:
+        checkingIdVar = true;
+        if(!idFornCheck.isSelected()){
+            checkingIdVar = false;
+        }
+        if(checkingIdVar == true){
+            idFornField.setText("");
+            Random rand = new Random();
+            int idRand = rand.nextInt(999999998) +1;
+            
+            idFornField.setText(Integer.toString(idRand));
+            idFornField.setEditable(false);
+            
+        } else{
+            idFornField.setText("");
+            idFornField.setEditable(true);
+        }
+    }//GEN-LAST:event_idFornCheckActionPerformed
+
+    private void orcaIDCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orcaIDCheckActionPerformed
+        checkingIdVar = true;
+        if(!orcaIDCheck.isSelected()){
+            checkingIdVar = false;
+        }
+        if(checkingIdVar == true){
+            orcaIDField.setText("");
+            Random rand = new Random();
+            int idRand = rand.nextInt(999999998) +1;
+            
+            orcaIDField.setText(Integer.toString(idRand));
+            orcaIDField.setEditable(false);
+            
+        } else{
+            orcaIDField.setText("");
+            orcaIDField.setEditable(true);
+        }
+    }//GEN-LAST:event_orcaIDCheckActionPerformed
     
     private void checkingId(){
         
@@ -751,19 +999,27 @@ public class SelectAdc extends javax.swing.JFrame {
     private javax.swing.JButton cancelar;
     private javax.swing.JFormattedTextField celularField;
     private javax.swing.JFormattedTextField cepField;
+    private javax.swing.JFormattedTextField cepFornField;
     private javax.swing.JTextField clienteNomeF;
     private javax.swing.JTextField cpfCnpjField;
+    private javax.swing.JTextField cpfCnpjFornField;
+    private javax.swing.JFormattedTextField dataFornField;
     private javax.swing.JFormattedTextField dataNasField;
     private javax.swing.JFormattedTextField dataProdField;
     private javax.swing.JTextArea descProdField;
     private javax.swing.JTextField endComplField;
+    private javax.swing.JTextField endFornField;
     private javax.swing.JCheckBox idCheckBox;
     private javax.swing.JCheckBox idClCB;
     private javax.swing.JTextField idClField;
     private javax.swing.JTextField idField;
+    private javax.swing.JCheckBox idFornCheck;
+    private javax.swing.JTextField idFornField;
     private javax.swing.JLabel idLabel;
     private javax.swing.JFormattedTextField ieField;
+    private javax.swing.JFormattedTextField ieFornField;
     private javax.swing.JFormattedTextField imField;
+    private javax.swing.JFormattedTextField imFornField;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -785,7 +1041,18 @@ public class SelectAdc extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -802,8 +1069,10 @@ public class SelectAdc extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField nomeClField;
+    private javax.swing.JTextField nomeFornField;
     private javax.swing.JTextField nomeProdField;
     private javax.swing.JFormattedTextField numField;
+    private javax.swing.JFormattedTextField numFornField;
     private javax.swing.JComboBox orcaClCombo;
     private javax.swing.JTextField orcaCliField;
     private javax.swing.JFormattedTextField orcaDataField;
@@ -815,13 +1084,18 @@ public class SelectAdc extends javax.swing.JFrame {
     private javax.swing.JCheckBox prodGeraIDCheck;
     private javax.swing.JTextField prodIDField;
     private javax.swing.JFormattedTextField quantProdField;
+    private javax.swing.JFormattedTextField rgFornField;
     private javax.swing.JLabel rgLabel;
+    private javax.swing.JLabel rgLabel1;
     private javax.swing.JFormattedTextField rgfField;
+    private javax.swing.JButton salvarFornecedores;
     private javax.swing.JButton salvarOrcamentos;
     private javax.swing.JButton salvarProducao;
     private javax.swing.JButton salvarTodos;
     private javax.swing.JButton saveClient;
     private javax.swing.JButton saveVendas;
+    private javax.swing.JFormattedTextField tel1FornField;
+    private javax.swing.JFormattedTextField tel2FornField;
     private javax.swing.JFormattedTextField telefoneField;
     private javax.swing.JTextField vendNomeF;
     // End of variables declaration//GEN-END:variables
