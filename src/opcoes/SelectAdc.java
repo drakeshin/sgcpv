@@ -5,9 +5,17 @@
  */
 package opcoes;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.Properties;
 import java.util.Random;
 import java.util.logging.Level;
@@ -1010,14 +1018,12 @@ public class SelectAdc extends javax.swing.JFrame {
         String path = System.getProperty("user.home") + File.separator + "Documents" + File.separator + "SGVPC - System" + File.separator;
         File file = new File(path+"sellControl.data");
         try {
-            Properties prop = config.loadSell();
+            FileWriter fwriter = new FileWriter(file, true);
             
             String keyword = idField.getText() +";"+ clienteNomeF.getText()+";"+vendasProdCombo.getSelectedItem().toString()+";"+vendasDataField.getText()+";"+vendNomeF.getText()+";"+vendasDescField.getText()+";";
             
-            keyword = keyword.replace("=", " ");
-            
-            prop.setProperty(keyword, path+"sellControl.data");
-            prop.store(new FileOutputStream(file), null);
+            fwriter.write(keyword+"\n");
+            fwriter.close();
            
             this.dispose();
             //System.out.println(prop.elements());

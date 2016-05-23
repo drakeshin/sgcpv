@@ -7,8 +7,11 @@ package sgcvp;
 
 import com.sun.xml.internal.ws.util.StringUtils;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Properties;
@@ -32,6 +35,8 @@ public class Main extends javax.swing.JFrame {
     private Config shandler;
     public boolean checkedID;
     SelectAdc selecF;
+    private BufferedReader breader;
+    private BufferedWriter bwriter;
     /**
      * Creates new form Main
      */
@@ -221,6 +226,11 @@ public class Main extends javax.swing.JFrame {
         myTab.addTab("Fornecedores", jScrollPane5);
 
         delItem.setText("Deletar Item");
+        delItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delItemActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Visualizar Item");
 
@@ -310,8 +320,7 @@ public class Main extends javax.swing.JFrame {
         String path = System.getProperty("user.home") + File.separator + "Documents" + File.separator + "SGVPC - System" + File.separator;
         File arquivo = new File(path+"sellControl.data");
         try {
-            // Load the properties file
-            prop = shandler.loadSell();
+            
             //use the defaul model to "update" information
             DefaultTableModel model = (DefaultTableModel) tabelaVendas.getModel();
             if (model.getRowCount() > 0){
@@ -324,18 +333,20 @@ public class Main extends javax.swing.JFrame {
             BufferedReader br = new BufferedReader(isr);
             
             //read all the file
-            String line = br.readLine();
+            
             BufferedReader txtReader = new BufferedReader(br);
-            String txt = txtReader.readLine();
+            String txt = br.readLine();
+            
+            
             //the the information split by ";" to show in the table
             while(txt != null){
                 
-                Object[] obj = line.split(";");
+                Object[] obj = txt.split(";");
+                
                 model.addRow(obj);
-                line = br.readLine();
+                txt = br.readLine();
             }
-            //tabelaVendas.revalidate();
-            //tabelaVendas.repaint();
+            
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(rootPane, "Erro");
@@ -347,8 +358,8 @@ public class Main extends javax.swing.JFrame {
         String path = System.getProperty("user.home") + File.separator + "Documents" + File.separator + "SGVPC - System" + File.separator;
         File arquivo = new File(path+"clientControl.data");
         try {
-            // Load the properties file
-            prop = shandler.loadClient();
+            //Load the properties file
+            prop = shandler.loadSell();
             //use the defaul model to "update" information
             DefaultTableModel model = (DefaultTableModel) tabelaClientes.getModel();
             if (model.getRowCount() > 0){
@@ -368,8 +379,7 @@ public class Main extends javax.swing.JFrame {
                 model.addRow(obj);
                 line = br.readLine();
             }
-            //tabelaVendas.revalidate();
-            //tabelaVendas.repaint();
+            
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(rootPane, "Erro");
@@ -488,6 +498,40 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Erro");
         }
     }//GEN-LAST:event_fornecTableAncestorAdded
+    
+    /**
+     * Delet Itens
+     * 
+     * @param evt 
+     */
+    
+    private void delItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delItemActionPerformed
+        if(tabelaVendas.getSelectedRow() != -1){
+            DefaultTableModel model = (DefaultTableModel) tabelaVendas.getModel();
+            model.removeRow(tabelaVendas.getSelectedRow());
+            String path = System.getProperty("user.home") + File.separator + "Documents" + File.separator + "SGVPC - System" + File.separator;
+            File file = new File(path+"sellControl.data");
+            try {
+                FileWriter fwriter = new FileWriter(file, true);//BUG
+                breader = new BufferedReader(new FileReader(file));//BUG
+                bwriter = new BufferedWriter(fwriter);//BUG
+                
+                int lineRemove = tabelaVendas.getSelectedRow();//BUG
+                String currentLine;//BUG
+                // BUG GERAL POR AQUI, BELÉ?
+                while((currentLine = breader.readLine()) != null){
+                   if((currentLine.trim()).equals(lineRemove)) continue;
+                   currentLine ="";
+                   bwriter.write(currentLine + System.getProperty("line.separator"));
+                }
+                bwriter.close();
+                breader.close();
+           
+            } catch (IOException ex) {
+               
+            }
+        }
+    }//GEN-LAST:event_delItemActionPerformed
     
     /**
      * @param args the command line arguments
