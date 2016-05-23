@@ -153,4 +153,35 @@ public class Config {
         return prop4;
     }
      
+     public static Properties loadFornecedores() throws FileNotFoundException, IOException{
+        
+        
+        Properties prop5 = new Properties();
+        String path = System.getProperty("user.home") + File.separator + "Documents" + File.separator;
+        File folder = new File(path+"SGVPC - System");
+        if(!folder.exists()){
+            try{
+                folder.mkdirs();
+            }catch(Exception e){JOptionPane.showMessageDialog(null, "Error: "+e);}
+        }else{}
+        
+        
+        File file5 = new File(folder+File.separator+"fornecControl.data");
+        
+        if(!file5.exists()){
+            try{
+                
+                PrintWriter writer5 = new PrintWriter(file5);
+                
+                writer5.print("");
+                
+                writer5.close();
+            }catch(Exception e){JOptionPane.showMessageDialog(null, "Error: "+e);}
+        }else{}
+        
+        stream = new FileInputStream(file5);
+        prop5.load(stream);
+        return prop5;
+    }
+     
 }

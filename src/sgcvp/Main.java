@@ -57,7 +57,7 @@ public class Main extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         tabelaOrcamentos = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        fornecTable = new javax.swing.JTable();
         delItem = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -190,7 +190,7 @@ public class Main extends javax.swing.JFrame {
 
         myTab.addTab("Orçamentos", jScrollPane4);
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        fornecTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -206,7 +206,16 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane5.setViewportView(jTable4);
+        fornecTable.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                fornecTableAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jScrollPane5.setViewportView(fornecTable);
 
         myTab.addTab("Fornecedores", jScrollPane5);
 
@@ -441,6 +450,40 @@ public class Main extends javax.swing.JFrame {
         selecF.setVisible(true);
         
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void fornecTableAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_fornecTableAncestorAdded
+        // TODO add your handling code here:
+        String path = System.getProperty("user.home") + File.separator + "Documents" + File.separator + "SGVPC - System" + File.separator;
+        File arquivo = new File(path+"fornecControl.data");
+        try {
+            // Load the properties file
+            prop = shandler.loadFornecedores();
+            //use the defaul model to "update" information
+            DefaultTableModel model = (DefaultTableModel) fornecTable.getModel();
+            if (model.getRowCount() > 0){
+                model.setRowCount(0);
+            }
+            
+            //just something to user the file
+            FileInputStream fis = new FileInputStream(arquivo);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader br = new BufferedReader(isr);
+            
+            //read all the file
+            String line = br.readLine();
+            //the the information split by ";" to show in the table
+            while(line != null){
+                Object[] obj = line.split(";");
+                model.addRow(obj);
+                line = br.readLine();
+            }
+            //tabelaVendas.revalidate();
+            //tabelaVendas.repaint();
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, "Erro");
+        }
+    }//GEN-LAST:event_fornecTableAncestorAdded
     
     /**
      * @param args the command line arguments
@@ -479,6 +522,7 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton delItem;
+    private javax.swing.JTable fornecTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JMenu jMenu1;
@@ -492,7 +536,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable jTable4;
     private javax.swing.JTabbedPane myTab;
     private javax.swing.JTable tabelaClientes;
     private javax.swing.JTable tabelaOrcamentos;

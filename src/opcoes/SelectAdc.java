@@ -77,7 +77,36 @@ public class SelectAdc extends javax.swing.JFrame {
         celularField = new javax.swing.JFormattedTextField();
         saveClient = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        prodIDField = new javax.swing.JTextField();
+        prodGeraIDCheck = new javax.swing.JCheckBox();
+        jLabel16 = new javax.swing.JLabel();
+        nomeProdField = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        descProdField = new javax.swing.JTextArea();
+        jLabel18 = new javax.swing.JLabel();
+        quantProdField = new javax.swing.JFormattedTextField();
+        jLabel19 = new javax.swing.JLabel();
+        dataProdField = new javax.swing.JFormattedTextField();
+        salvarProducao = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        orcaIDField = new javax.swing.JTextField();
+        orcaIDCheck = new javax.swing.JCheckBox();
+        jLabel21 = new javax.swing.JLabel();
+        orcaCliField = new javax.swing.JTextField();
+        orcaClCombo = new javax.swing.JComboBox();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        orcaProdCombo = new javax.swing.JComboBox();
+        jLabel24 = new javax.swing.JLabel();
+        orcaProdField = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        orcaQtdField = new javax.swing.JFormattedTextField();
+        jLabel26 = new javax.swing.JLabel();
+        orcaDataField = new javax.swing.JFormattedTextField();
+        salvarOrcamentos = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         salvarTodos = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
@@ -138,7 +167,7 @@ public class SelectAdc extends javax.swing.JFrame {
                         .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(327, 327, 327)
+                .addGap(324, 324, 324)
                 .addComponent(saveVendas)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -167,9 +196,8 @@ public class SelectAdc extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(vendNomeF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(saveVendas)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(saveVendas))
         );
 
         jTabbedPane1.addTab("Vendas", jPanel1);
@@ -177,6 +205,11 @@ public class SelectAdc extends javax.swing.JFrame {
         jLabel4.setText("ID:");
 
         idClCB.setText("Gerar ID Automaticamente");
+        idClCB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idClCBActionPerformed(evt);
+            }
+        });
 
         nomeClField.setToolTipText("Nome / Razão Social");
 
@@ -354,35 +387,217 @@ public class SelectAdc extends javax.swing.JFrame {
                     .addComponent(telefoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
                     .addComponent(celularField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
-                .addComponent(saveClient)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
+                .addComponent(saveClient))
         );
 
         jTabbedPane1.addTab("Clientes", jPanel2);
+
+        jLabel15.setText("ID:");
+
+        prodGeraIDCheck.setText("Gerar ID Automaticamente");
+        prodGeraIDCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prodGeraIDCheckActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setText("Produto:");
+
+        jLabel17.setText("Descrição:");
+
+        descProdField.setColumns(20);
+        descProdField.setRows(5);
+        jScrollPane2.setViewportView(descProdField);
+
+        jLabel18.setText("Quantidade:");
+
+        try {
+            quantProdField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("######")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jLabel19.setText("Validade:");
+
+        try {
+            dataProdField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        salvarProducao.setText("Salvar");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 719, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(nomeProdField)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(prodIDField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(prodGeraIDCheck))
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel17)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel18)
+                                .addGap(80, 80, 80)
+                                .addComponent(jLabel19))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(quantProdField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(dataProdField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(323, 323, 323)
+                .addComponent(salvarProducao)
+                .addContainerGap(333, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 444, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(prodIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prodGeraIDCheck))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nomeProdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(quantProdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dataProdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addComponent(salvarProducao))
         );
 
         jTabbedPane1.addTab("Produtos", jPanel3);
+
+        jLabel20.setText("ID:");
+
+        orcaIDCheck.setText("Gerar ID Automaticamente");
+
+        jLabel21.setText("Cliente:");
+
+        orcaClCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel22.setText("Ou");
+
+        jLabel23.setText("Produto:");
+
+        orcaProdCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel24.setText("Ou");
+
+        jLabel25.setText("Quantidade:");
+
+        try {
+            orcaQtdField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("######")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jLabel26.setText("Data do Orçamento:");
+
+        try {
+            orcaDataField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        salvarOrcamentos.setText("Salvar");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 719, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(orcaCliField)
+                    .addComponent(orcaClCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(orcaProdCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(orcaProdField)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel20)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(orcaIDField, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(orcaIDCheck))
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel23)
+                            .addComponent(jLabel24)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel25)
+                                    .addComponent(orcaQtdField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(23, 23, 23)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(orcaDataField))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(322, 322, 322)
+                .addComponent(salvarOrcamentos)
+                .addContainerGap(334, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 444, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(orcaIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(orcaIDCheck))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(orcaCliField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(orcaClCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(orcaProdCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(orcaProdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabel26))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(orcaQtdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(orcaDataField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                .addComponent(salvarOrcamentos))
         );
 
         jTabbedPane1.addTab("Orçamentos", jPanel4);
@@ -429,7 +644,10 @@ public class SelectAdc extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /***
+     * ID Generation
+     * @param evt 
+     */
     private void idCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idCheckBoxActionPerformed
         checkingIdVar = true;
         if(!idCheckBox.isSelected()){
@@ -437,6 +655,47 @@ public class SelectAdc extends javax.swing.JFrame {
         }
         checkingId();
     }//GEN-LAST:event_idCheckBoxActionPerformed
+
+    private void idClCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idClCBActionPerformed
+        // TODO add your handling code here:
+        checkingIdVar = true;
+        if(!idClCB.isSelected()){
+            checkingIdVar = false;
+        }
+        if(checkingIdVar == true){
+            idClField.setText("");
+            Random rand = new Random();
+            int idRand = rand.nextInt(999999998) +1;
+            
+            idClField.setText(Integer.toString(idRand));
+            idClField.setEditable(false);
+            
+        } else{
+            idClField.setText("");
+            idClField.setEditable(true);
+        }
+        
+    }//GEN-LAST:event_idClCBActionPerformed
+
+    private void prodGeraIDCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prodGeraIDCheckActionPerformed
+        // TODO add your handling code here:
+        checkingIdVar = true;
+        if(!prodGeraIDCheck.isSelected()){
+            checkingIdVar = false;
+        }
+        if(checkingIdVar == true){
+            prodIDField.setText("");
+            Random rand = new Random();
+            int idRand = rand.nextInt(999999998) +1;
+            
+            prodIDField.setText(Integer.toString(idRand));
+            prodIDField.setEditable(false);
+            
+        } else{
+            prodIDField.setText("");
+            prodIDField.setEditable(true);
+        }
+    }//GEN-LAST:event_prodGeraIDCheckActionPerformed
     
     private void checkingId(){
         
@@ -495,6 +754,8 @@ public class SelectAdc extends javax.swing.JFrame {
     private javax.swing.JTextField clienteNomeF;
     private javax.swing.JTextField cpfCnpjField;
     private javax.swing.JFormattedTextField dataNasField;
+    private javax.swing.JFormattedTextField dataProdField;
+    private javax.swing.JTextArea descProdField;
     private javax.swing.JTextField endComplField;
     private javax.swing.JCheckBox idCheckBox;
     private javax.swing.JCheckBox idClCB;
@@ -511,7 +772,19 @@ public class SelectAdc extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -525,12 +798,27 @@ public class SelectAdc extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField nomeClField;
+    private javax.swing.JTextField nomeProdField;
     private javax.swing.JFormattedTextField numField;
+    private javax.swing.JComboBox orcaClCombo;
+    private javax.swing.JTextField orcaCliField;
+    private javax.swing.JFormattedTextField orcaDataField;
+    private javax.swing.JCheckBox orcaIDCheck;
+    private javax.swing.JTextField orcaIDField;
+    private javax.swing.JComboBox orcaProdCombo;
+    private javax.swing.JTextField orcaProdField;
+    private javax.swing.JFormattedTextField orcaQtdField;
+    private javax.swing.JCheckBox prodGeraIDCheck;
+    private javax.swing.JTextField prodIDField;
+    private javax.swing.JFormattedTextField quantProdField;
     private javax.swing.JLabel rgLabel;
     private javax.swing.JFormattedTextField rgfField;
+    private javax.swing.JButton salvarOrcamentos;
+    private javax.swing.JButton salvarProducao;
     private javax.swing.JButton salvarTodos;
     private javax.swing.JButton saveClient;
     private javax.swing.JButton saveVendas;
