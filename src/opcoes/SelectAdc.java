@@ -5,7 +5,15 @@
  */
 package opcoes;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import sistema.Config;
 
 /**
  *
@@ -15,7 +23,7 @@ public class SelectAdc extends javax.swing.JFrame {
     /***
      * Var Area
      */
-    
+    private Config config;
     private boolean checkingIdVar = false;
     
     /**
@@ -42,13 +50,16 @@ public class SelectAdc extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         clienteNomeF = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        vendasProdCombo = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        vendasDescField = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         vendNomeF = new javax.swing.JTextField();
         saveVendas = new javax.swing.JButton();
         jComboBox2 = new javax.swing.JComboBox();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        vendasDataField = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         idClField = new javax.swing.JTextField();
@@ -154,17 +165,32 @@ public class SelectAdc extends javax.swing.JFrame {
 
         jLabel2.setText("Produto:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        vendasProdCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        vendasDescField.setColumns(20);
+        vendasDescField.setRows(5);
+        jScrollPane1.setViewportView(vendasDescField);
 
         jLabel3.setText("Vendedor:");
 
         saveVendas.setText("Salvar");
+        saveVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveVendasActionPerformed(evt);
+            }
+        });
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel38.setText("Ou");
+
+        jLabel39.setText("Data:");
+
+        try {
+            vendasDataField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -173,25 +199,35 @@ public class SelectAdc extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(vendNomeF)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(idLabel)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(vendasProdCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(vendNomeF)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(64, 64, 64)
-                                .addComponent(idCheckBox))
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(0, 265, Short.MAX_VALUE))
+                                .addComponent(clienteNomeF, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addComponent(jLabel38)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(64, 64, 64)
+                                        .addComponent(idCheckBox)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(vendasDataField, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(clienteNomeF, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(idLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel39)
+                        .addGap(225, 225, 225))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(324, 324, 324)
                 .addComponent(saveVendas)
@@ -201,21 +237,25 @@ public class SelectAdc extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(idLabel)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(idLabel)
+                    .addComponent(jLabel39))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(idCheckBox))
+                    .addComponent(idCheckBox)
+                    .addComponent(vendasDataField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(clienteNomeF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel38))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(vendasProdCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -960,6 +1000,39 @@ public class SelectAdc extends javax.swing.JFrame {
             idField.setEditable(true);
         }
     }
+    
+    /***
+     * Process infromation to file
+     */
+    
+    private void saveVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveVendasActionPerformed
+     
+        String path = System.getProperty("user.home") + File.separator + "Documents" + File.separator + "SGVPC - System" + File.separator;
+        File file = new File(path+"sellControl.data");
+        try {
+            Properties prop = config.loadSell();
+            
+            String keyword = idField.getText() +";"+ clienteNomeF.getText()+";"+vendasProdCombo.getSelectedItem().toString()+";"+vendasDataField.getText()+";"+vendNomeF.getText()+";"+vendasDescField.getText()+";";
+            
+            keyword = keyword.replace("=", " ");
+            
+            prop.setProperty(keyword, path+"sellControl.data");
+            prop.store(new FileOutputStream(file), null);
+           
+            this.dispose();
+            //System.out.println(prop.elements());
+            
+            
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(endComplField, "Erro: Não pode salvar");
+        }
+        
+    }//GEN-LAST:event_saveVendasActionPerformed
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -1020,7 +1093,6 @@ public class SelectAdc extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField ieFornField;
     private javax.swing.JFormattedTextField imField;
     private javax.swing.JFormattedTextField imFornField;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1053,6 +1125,8 @@ public class SelectAdc extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1067,7 +1141,6 @@ public class SelectAdc extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField nomeClField;
     private javax.swing.JTextField nomeFornField;
     private javax.swing.JTextField nomeProdField;
@@ -1098,5 +1171,8 @@ public class SelectAdc extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField tel2FornField;
     private javax.swing.JFormattedTextField telefoneField;
     private javax.swing.JTextField vendNomeF;
+    private javax.swing.JFormattedTextField vendasDataField;
+    private javax.swing.JTextArea vendasDescField;
+    private javax.swing.JComboBox vendasProdCombo;
     // End of variables declaration//GEN-END:variables
 }
